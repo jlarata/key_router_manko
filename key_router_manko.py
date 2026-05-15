@@ -3,6 +3,7 @@ import os
 from tkinter import *
 from tkinter import ttk
 from pynput import keyboard, mouse
+from pynput.keyboard import Key
 
 
 map_key_1 = 'u'
@@ -374,6 +375,8 @@ def on_press(key):
             action = action_var.get()
             if trigger and action and key.char == trigger:
                 app.is_simulating = True
+                keyboard_controller.press(Key.backspace)
+                keyboard_controller.release(Key.backspace)  
                 keyboard_controller.press(action)
                 keyboard_controller.release(action)
                 app.is_simulating = False
